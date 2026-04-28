@@ -1,0 +1,11 @@
+com\mycompany\carbonwebservlet\LoginServlet.class
+com\mycompany\carbonwebservlet\AuthFilter.class
+com\mycompany\carbonwebservlet\JakartaRestConfiguration.class
+com\mycompany\carbonwebservlet\InsertServlet.class
+com\mycompany\carbonwebservlet\resources\JakartaEE8Resource.class
+com\mycompany\carbonwebservlet\DeleteServlet.class
+com\mycompany\carbonwebservlet\DBConnection.class
+com\mycompany\carbonwebservlet\LoggingFilter.class
+com\mycompany\carbonwebservlet\UpdateServlet.class
+com\mycompany\carbonwebservlet\ViewServlet.class
+com\mycompany\carbonwebservlet\EditServlet.class
