@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>JSF Carbon CRUD</title>
+</h:head>
+
+<h:body style="margin:0; padding:0; font-family:Arial; background:#f8fafc;">
+
+<div style="max-width:1300px; margin:40px auto; padding:20px;">
+
+    <!-- Title -->
+    <h1 style="color:#0f172a;">Carbon Footprint JSF CRUD</h1>
+
+    <!-- Form Card -->
+    <div style="background:white; padding:25px; border-radius:16px;
+                box-shadow:0 10px 25px rgba(0,0,0,0.08); margin-bottom:30px;">
+
+        <h2>Add New Record</h2>
+
+        <h:form id="saveForm">
+
+            <h:panelGrid columns="3" cellpadding="8">
+
+                <h:outputText value="Electricity:" />
+                <h:inputText id="electricity"
+                             value="#{carbonBean.electricity}"
+                             required="true"
+                             requiredMessage="Enter Electricity" />
+                <h:message for="electricity" style="color:red;" />
+
+                <h:outputText value="Distance:" />
+                <h:inputText id="distance"
+                             value="#{carbonBean.distance}"
+                             required="true"
+                             requiredMessage="Enter Distance" />
+                <h:message for="distance" style="color:red;" />
+
+                <h:outputText value="LPG:" />
+                <h:inputText id="lpg"
+                             value="#{carbonBean.lpg}"
+                             required="true"
+                             requiredMessage="Enter LPG" />
+                <h:message for="lpg" style="color:red;" />
+
+                <h:outputText value="Water:" />
+                <h:inputText id="water"
+                             value="#{carbonBean.water}"
+                             required="true"
+                             requiredMessage="Enter Water" />
+                <h:message for="water" style="color:red;" />
+
+                <h:outputText value="Waste:" />
+                <h:inputText id="waste"
+                             value="#{carbonBean.waste}"
+                             required="true"
+                             requiredMessage="Enter Waste" />
+                <h:message for="waste" style="color:red;" />
+
+            </h:panelGrid>
+
+            <br/>
+
+            <h:commandButton value="Save Record"
+                             action="#{carbonBean.save}"
+                             style="background:#16a34a;
+                             color:white;
+                             padding:10px 18px;
+                             border:none;
+                             border-radius:8px;
+                             cursor:pointer;" />
+
+            <br/><br/>
+
+            <h:outputText value="#{carbonBean.statusMessage}"
+                          style="color:blue;font-weight:bold;" />
+
+        </h:form>
+
+    </div>
+
+    <!-- Table Card -->
+    <div style="background:white; padding:25px; border-radius:16px;
+                box-shadow:0 10px 25px rgba(0,0,0,0.08);">
+
+        <h2>All Records</h2>
+
+        <h:dataTable value="#{carbonBean.allRecords}"
+                     var="u"
+                     border="1"
+                     style="width:100%; border-collapse:collapse;">
+
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{u.id}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Electricity</f:facet>
+                #{u.electricity}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Distance</f:facet>
+                #{u.distance}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">LPG</f:facet>
+                #{u.lpg}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Water</f:facet>
+                #{u.water}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Waste</f:facet>
+                #{u.waste}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Total</f:facet>
+                #{u.total}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Edit</f:facet>
+
+                <h:form>
+                    <h:commandButton value="Edit"
+                                     action="#{carbonBean.edit(u.id)}"
+                                     style="background:#2563eb;
+                                     color:white;
+                                     border:none;
+                                     padding:6px 12px;
+                                     border-radius:6px;" />
+                </h:form>
+
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Delete</f:facet>
+
+                <h:form>
+                    <h:commandButton value="Delete"
+                                     action="#{carbonBean.delete(u.id)}"
+                                     onclick="return confirm('Delete this record?')"
+                                     style="background:#dc2626;
+                                     color:white;
+                                     border:none;
+                                     padding:6px 12px;
+                                     border-radius:6px;" />
+                </h:form>
+
+            </h:column>
+
+        </h:dataTable>
+
+    </div>
+
+</div>
+
+</h:body>
+</html>
